@@ -17,8 +17,11 @@ stages:
               versionSpec: '11'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'AzureStorage'
-              azureCommonVirtualFile: 'storage090'
-              azureResourceManagerEndpoint: 'Free Trial(1)(3a373df8-1ae2-4620-8c66-0550ba56d571)'
+              azureResourceManagerEndpoint: '
+Free Trial(1)(3a373df8-1ae2-4620-8c66-0550ba56d571)'
+              azureStorageAccountName: 'storage090'
+    
+              azureCommonVirtualFile: 'jdk/openjdk-11.zip'
             displayName: 'Set up JDK 11'
           - task: Maven@4
             inputs:

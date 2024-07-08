@@ -12,12 +12,6 @@ stages:
         pool: 
           vmImage: 'windows-latest'
         steps:
-          - task: JavaToolInstaller@0
-            inputs:
-              versionSpec: '11'
-              jdkArchitectureOption: 'x64'
-              jdkSourceOption: 'AzureStorage'
-            displayName: 'Set up JDK 11'
           
           - task: Maven@4
             inputs:

@@ -17,6 +17,7 @@ stages:
               versionSpec: '11'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'AzureStorage'
+              azureCommonVirtualFile: '<path_to_your_azure_storage>'
             displayName: 'Set up JDK 11'
           - task: Maven@4
             inputs:

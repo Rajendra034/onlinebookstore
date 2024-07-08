@@ -12,25 +12,33 @@ stages:
         pool: 
           vmImage: 'windows-latest'
         steps:
+          - task: JavaToolInstaller@0
+            inputs:
+              versionSpec: '11'
+              jdkArchitectureOption: 'x64'
+              jdkSourceOption: 'AzureStorage'
+            displayName: 'Set up JDK 11'
+          
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
               goals: 'validate'
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'JDKVersion'
+              javaHomeOption: 'Path'
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
             displayName: 'Validate'
+          
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
               goals: 'compile'
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'JDKVersion'
+              javaHomeOption: 'Path'
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
@@ -43,22 +51,29 @@ stages:
               goals: 'test'
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'JDKVersion'
+              javaHomeOption: 'Path'
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
             displayName: 'Test'
+          
           - task: Maven@4
             inputs:
               mavenPomFile: 'pom.xml'
+              goals: 'package'
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
-              javaHomeOption: 'JDKVersion'
+              javaHomeOption: 'Path'
               mavenVersionOption: 'Default'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
             displayName: 'Package'
-
- 
+          
+          - task: PowerShell@2
+            inputs:
+              targetType: 'inline'
+              script: |
+                Write-Host "Running PowerShell script after Maven tasks"
+            displayName: 'Run PowerShell Script'

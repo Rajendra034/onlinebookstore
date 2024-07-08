@@ -17,7 +17,8 @@ stages:
               versionSpec: '11'
               jdkArchitectureOption: 'x64'
               jdkSourceOption: 'AzureStorage'
-              azureCommonVirtualFile: '<path_to_your_azure_storage>'
+              azureCommonVirtualFile: 'storage090'
+              azureResourceManagerEndpoint: 'Free Trial(1)(3a373df8-1ae2-4620-8c66-0550ba56d571)'
             displayName: 'Set up JDK 11'
           - task: Maven@4
             inputs:
@@ -26,7 +27,7 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '11'
+              jdkVersionOption: '1.8'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
@@ -39,7 +40,7 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '11'
+              jdkVersionOption: '1.8'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
@@ -52,7 +53,7 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '11'
+              jdkVersionOption: '1.8'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
@@ -65,7 +66,7 @@ stages:
               publishJUnitResults: true
               testResultsFiles: '**/surefire-reports/TEST-*.xml'
               javaHomeOption: 'JDKVersion'
-              jdkVersionOption: '11'
+              jdkVersionOption: '1.8'
               mavenAuthenticateFeed: false
               effectivePomSkip: false
               sonarQubeRunAnalysis: false
